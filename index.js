@@ -148,7 +148,7 @@ const usersChoice = () => {
         console.log("yuo have finished building your team");
         console.log(officeTeam);
         const finalTeam = render(officeTeam);
-        writeToFile("team.htm", finalTeam, (err) =>
+        writeToFile("team.html", finalTeam, (err) =>
           err ? console.log(err) : console.log("done")
         );
       }
