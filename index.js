@@ -6,9 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-console.log(OUTPUT_DIR);
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-console.log(outputPath);
 const render = require("./src/page-template.js");
 const { template } = require("@babel/core");
 
@@ -148,9 +146,7 @@ const usersChoice = () => {
         console.log("yuo have finished building your team");
         console.log(officeTeam);
         const finalTeam = render(officeTeam);
-        writeToFile("team.html", finalTeam, (err) =>
-          err ? console.log(err) : console.log("done")
-        );
+        writeToFile(finalTeam);
       }
     });
 };
@@ -159,8 +155,12 @@ const usersChoice = () => {
 managersPrompt().then(() => usersChoice());
 
 // function to create file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) =>
-    err ? console.log(err) : console.log("success")
+function writeToFile(data) {
+  fs.writeFile("./output/team.html", data, (err) =>
+    err
+      ? console.log(err)
+      : console.log(
+          "Html file containing your team has been generated in output folder! "
+        )
   );
 }
