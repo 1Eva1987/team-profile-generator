@@ -144,7 +144,6 @@ const usersChoice = () => {
         internInfo().then(() => usersChoice());
       } else if (response.action === "Finish building the team") {
         console.log("yuo have finished building your team");
-        console.log(officeTeam);
         const finalTeam = render(officeTeam);
         writeToFile(finalTeam);
       }
